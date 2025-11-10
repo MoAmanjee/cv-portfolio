@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Amanjee - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        nav a {
+            color: #333;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav a:hover {
+            color: #667eea;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #667eea;
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .hero-content {
+            animation: fadeInUp 1s ease;
+            z-index: 1;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin: 0 auto 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            animation: float 3s ease-in-out infinite;
+            object-fit: cover;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .hero .title {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            background: white;
+            color: #667eea;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: #667eea;
+        }
+        
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: white;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: white;
+            border-radius: 2px;
+        }
+        
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .skill-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .skill-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            padding: 0.5rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .skill-list li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        /* Experience Section */
+        .experience-item {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        
+        .experience-item:hover {
+            transform: translateX(10px);
+        }
+        
+        .experience-item h3 {
+            color: #667eea;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .experience-item .company {
+            color: #764ba2;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .experience-item .location {
+            color: #888;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .experience-item ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .experience-item li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .experience-item li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .project-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        
+        .project-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .project-card h3 {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin: 0;
+        }
+        
+        .project-card .content {
+            padding: 1.5rem;
+        }
+        
+        .project-card p {
+            color: #555;
+            margin-bottom: 1rem;
+        }
+        
+        .project-link {
+            display: inline-block;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .project-link:hover {
+            color: #764ba2;
+        }
+        
+        /* Awards Section */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .award-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        
+        .award-card:hover {
+            transform: scale(1.05);
+        }
+        
+        .award-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .award-card h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .award-card p {
+            color: #555;
+            font-size: 0.9rem;
+        }
+        
+        /* Contact Section */
+        .contact-info {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .contact-info a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+        
+        .contact-info a:hover {
+            color: #764ba2;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Code Challenge Game */
+        .game-container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .game-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .game-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .stat-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            text-align: center;
+            min-width: 120px;
+        }
+        
+        .stat-box h4 {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-box .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .code-display {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 2rem;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow-x: auto;
+        }
+        
+        .code-line {
+            margin: 0.5rem 0;
+        }
+        
+        .code-char {
+            display: inline;
+            transition: all 0.1s;
+        }
+        
+        .code-char.correct {
+            background: rgba(76, 175, 80, 0.3);
+            color: #4caf50;
+        }
+        
+        .code-char.incorrect {
+            background: rgba(244, 67, 54, 0.3);
+            color: #f44336;
+        }
+        
+        .code-char.current {
+            background: rgba(33, 150, 243, 0.5);
+            color: #2196f3;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0.5; }
+        }
+        
+        .input-area {
+            width: 100%;
+            padding: 1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            background: white;
+            margin-bottom: 1rem;
+        }
+        
+        .input-area:focus {
+            outline: none;
+            border-color: #764ba2;
+            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+        }
+        
+        .game-controls {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .game-btn {
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+        
+        .game-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .game-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .game-result {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 10px;
+            margin-top: 2rem;
+            display: none;
+        }
+        
+        .game-result.show {
+            display: block;
+            animation: fadeInUp 0.5s;
+        }
+        
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+        
+        .project-tag {
+            background: #667eea;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+            
+            section {
+                padding: 3rem 1rem;
+            }
+            
+            .code-display {
+                font-size: 0.9rem;
+                padding: 1rem;
+            }
+            
+            .game-container {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#game">Code Challenge</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#awards">Awards</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <img src="Downloads/IMG_5620.jpg" alt="Mohammed Amanjee" class="profile-img">
+            <h1>Mohammed Amanjee</h1>
+            <p class="title">Computer Science | Software Engineer | Data & AI</p>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9;">
+                Passionate developer blending technical expertise with discipline from sports
+            </p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn">Get In Touch</a>
+                <a href="Mohammed_Amanjee_CV.pdf" class="btn btn-outline" download>Download CV</a>
+            </div>
+        </div>
+    </section>
+    
+    <section id="skills" class="fade-in">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-container">
+            <div class="skill-card">
+                <h3>Programming Languages</h3>
+                <ul class="skill-list">
+                    <li>Python</li>
+                    <li>Java</li>
+                    <li>JavaScript</li>
+                    <li>C, C++</li>
+                    <li>SQL</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Web Technologies</h3>
+                <ul class="skill-list">
+                    <li>HTML & CSS</li>
+                    <li>XML</li>
+                    <li>API Integration</li>
+                    <li>Flutter</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Databases</h3>
+                <ul class="skill-list">
+                    <li>MySQL</li>
+                    <li>Microsoft SQL Server</li>
+                    <li>Data Warehousing</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Specialized Skills</h3>
+                <ul class="skill-list">
+                    <li>Machine Learning</li>
+                    <li>Cybersecurity</li>
+                    <li>Mobile App Development</li>
+                    <li>ETL & Data Processing</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <section id="experience" class="fade-in">
+        <h2 class="section-title">Professional Experience</h2>
+        <div class="experience-item">
+            <h3>Website Manager</h3>
+            <div class="company">Isak Muhammad</div>
+            <div class="location">Rustenburg, South Africa</div>
+            <ul>
+                <li>Managed and updated the website of the DStv franchise store</li>
+                <li>Oversaw website content, layout, and performance</li>
+                <li>Contributed to measurable increase in online visibility and customer traffic</li>
+            </ul>
+        </div>
+        <div class="experience-item">
+            <h3>Website Manager</h3>
+            <div class="company">E-tech Cars</div>
+            <div class="location">Rustenburg, South Africa</div>
+            <ul>
+                <li>Managed and maintained the garage's website vehicle listings</li>
+                <li>Improved website design and performance to attract more traffic</li>
+            </ul>
+        </div>
+        <div class="experience-item">
+            <h3>Technical Support Assistant</h3>
+            <div class="company">Syds Suspension</div>
+            <div class="location">Pretoria, South Africa</div>
+            <ul>
+                <li>Provided technical support for in-store computer systems</li>
+                <li>Set up and maintained POS systems and customer management software</li>
+                <li>Assisted with IT inventory management and staff training</li>
+            </ul>
+        </div>
+    </section>
+    
+    <section id="game" class="fade-in">
+        <h2 class="section-title">Code Challenge Game</h2>
+        <div class="game-container">
+            <div class="game-header">
+                <h3 style="color: #667eea; margin-bottom: 1rem;">Test Your Coding Skills!</h3>
+                <p style="color: #555;">Type the code snippet as fast and accurately as you can. Show off your typing speed and attention to detail!</p>
+            </div>
+            <div class="game-stats">
+                <div class="stat-box">
+                    <h4>WPM</h4>
+                    <div class="stat-value" id="wpm">0</div>
+                </div>
+                <div class="stat-box">
+                    <h4>Accuracy</h4>
+                    <div class="stat-value" id="accuracy">100%</div>
+                </div>
+                <div class="stat-box">
+                    <h4>Time</h4>
+                    <div class="stat-value" id="timer">0s</div>
+                </div>
+            </div>
+            <div class="code-display" id="codeDisplay"></div>
+            <input type="text" class="input-area" id="codeInput" placeholder="Start typing here..." disabled>
+            <div class="game-controls">
+                <button class="game-btn" id="startBtn">Start Challenge</button>
+                <button class="game-btn" id="resetBtn" disabled>Reset</button>
+            </div>
+            <div class="game-result" id="gameResult"></div>
+        </div>
+    </section>
+    
+    <section id="projects" class="fade-in">
+        <h2 class="section-title">All Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>📍 Mosque Locator App</h3>
+                <div class="content">
+                    <p>Flutter mobile application that shows nearest mosques based on user location, includes Qiblah compass, Quran API integration & prayer times.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Flutter</span>
+                        <span class="project-tag">Mobile</span>
+                        <span class="project-tag">API</span>
+                    </div>
+                    <a href="https://github.com/MoAmanjee" class="project-link" target="_blank">View on GitHub →</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>🕳️ Pothole Detection Project</h3>
+                <div class="content">
+                    <p>Computer vision project for detecting and mapping potholes using image processing and machine learning techniques to improve road infrastructure monitoring.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">Machine Learning</span>
+                        <span class="project-tag">Computer Vision</span>
+                    </div>
+                    <a href="https://github.com/MoAmanjee" class="project-link" target="_blank">View on GitHub →</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>🎮 C# Text-Based Adventure Game</h3>
+                <div class="content">
+                    <p>OOP-based multi-level console game with puzzle-solving and interactive rooms. Developed for university coursework with emphasis on clean architecture.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">C#</span>
+                        <span class="project-tag">OOP</span>
+                        <span class="project-tag">Game Development</span>
+                    </div>
+                    <a href="https://github.com/MoAmanjee" class="project-link" target="_blank">View on GitHub →</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>🐍 Python Games & Projects</h3>
+                <div class="content">
+                    <p>Collection of Python projects including Pygame-based interactive games, data analysis scripts using Pandas/Numpy, and automation tools for repetitive tasks.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                        <span class="project-tag">Pygame</span>
+                        <span class="project-tag">Data Analysis</span>
+                    </div>
+                    <a href="https://github.com/MoAmanjee" class="project-link" target="_blank">View on GitHub →</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>💻 C++ Campus Projects</h3>
+                <div class="content">
+                    <p>Bank Management System with OOP file-handling, Data Structures (Linked lists, stacks, queues, BST), and optimized Sorting & Searching Algorithms.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">C++</span>
+                        <span class="project-tag">Data Structures</span>
+                        <span class="project-tag">Algorithms</span>
+                    </div>
+                    <a href="https://github.com/MoAmanjee" class="project-link" target="_blank">View on GitHub →</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>🏔️ BASE SAS</h3>
+                <div class="content">
+                    <p>SAS programs to process and display employee and sales data with sorting, grouping, and formatting. Includes user-defined formats and Excel integration.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">SAS</span>
+                        <span class="project-tag">Data Processing</span>
+                        <span class="project-tag">Excel</span>
+                    </div>
+                    <a href="https://github.com/MoAmanjee" class="project-link" target="_blank">View on GitHub →</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <h3>🏭 Data Warehouse ETL</h3>
+                <div class="content">
+                    <p>ETL Solution for MakerInc using Microsoft SSIS and SQL Server. Data Warehouse Design with Dimension, Fact, and Master tables. Built in Visual Studio.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">SSIS</span>
+                        <span class="project-tag">SQL Server</span>
+                        <span class="project-tag">ETL</span>
+                    </div>
+                    <a href="https://github.com/MoAmanjee" class="project-link" target="_blank">View on GitHub →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="awards" class="fade-in">
+        <h2 class="section-title">Accomplishments & Awards</h2>
+        <div class="awards-grid">
+            <div class="award-card">
+                <div class="award-icon">🏆</div>
+                <h3>Silver Medalist</h3>
+                <p>Commonwealth Games - Represented South Africa in Judo</p>
+            </div>
+            <div class="award-card">
+                <div class="award-icon">🥇</div>
+                <h3>Multiple-Time Champion</h3>
+                <p>South African Judo Champion across various age divisions</p>
+            </div>
+            <div class="award-card">
+                <div class="award-icon">🥋</div>
+                <h3>Black Belt</h3>
+                <p>16+ years of consistent training and national-level competition</p>
+            </div>
+            <div class="award-card">
+                <div class="award-icon">🇿🇦</div>
+                <h3>National Team</h3>
+                <p>Represented South Africa in international judo competitions</p>
+            </div>
+            <div class="award-card">
+                <div class="award-icon">👨‍🏫</div>
+                <h3>Head Coach</h3>
+                <p>NWU Judo Club - Leadership and competitive success</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact" class="fade-in">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-info">
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; color: #555;">
+                Let's connect and discuss opportunities!
+            </p>
+            <div style="margin: 2rem 0;">
+                <a href="tel:+27608270838">📞 +27 608270838</a>
+                <a href="mailto:mohammedamanjee@gmail.com">✉️ mohammedamanjee@gmail.com</a>
+            </div>
+            <div style="margin: 2rem 0;">
+                <a href="https://www.linkedin.com/in/mohammed-amanjee-881725285" target="_blank">LinkedIn</a>
+                <a href="https://github.com/MoAmanjee" target="_blank">GitHub</a>
+            </div>
+            <p style="color: #888; margin-top: 2rem;">
+                Location: Rustenburg, South Africa
+            </p>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Mohammed Amanjee. All rights reserved.</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8;">"Discipline, both in code and in sport, is the key to mastery."</p>
+    </footer>
+    
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Fade in on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+        
+        // Code Challenge Game
+        const codeSnippets = [
+            `function quickSort(arr) {
+    if (arr.length <= 1) return arr;
+    const pivot = arr[Math.floor(arr.length / 2)];
+    const left = arr.filter(x => x < pivot);
+    const right = arr.filter(x => x > pivot);
+    return [...quickSort(left), pivot, ...quickSort(right)];
+}`,
+            `class Node {
+    constructor(data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    constructor() {
+        this.head = null;
+    }
+    
+    append(data) {
+        const newNode = new Node(data);
+        if (!this.head) {
+            this.head = newNode;
+            return;
+        }
+        let current = this.head;
+        while (current.next) {
+            current = current.next;
+        }
+        current.next = newNode;
+    }
+}`,
+            `async function fetchData(url) {
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    }
+}`,
+            `def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return -1`
+        ];
+        
+        let currentCode = '';
+        let currentIndex = 0;
+        let startTime = null;
+        let timerInterval = null;
+        let correctChars = 0;
+        let totalChars = 0;
+        let isPlaying = false;
+        
+        const codeDisplay = document.getElementById('codeDisplay');
+        const codeInput = document.getElementById('codeInput');
+        const startBtn = document.getElementById('startBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const wpmDisplay = document.getElementById('wpm');
+        const accuracyDisplay = document.getElementById('accuracy');
+        const timerDisplay = document.getElementById('timer');
+        const gameResult = document.getElementById('gameResult');
+        
+        function initGame() {
+            currentCode = codeSnippets[Math.floor(Math.random() * codeSnippets.length)];
+            currentIndex = 0;
+            correctChars = 0;
+            totalChars = 0;
+            startTime = null;
+            isPlaying = false;
+            
+            codeDisplay.innerHTML = '';
+            currentCode.split('\n').forEach((line, lineIndex) => {
+                const lineDiv = document.createElement('div');
+                lineDiv.className = 'code-line';
+                line.split('').forEach((char, charIndex) => {
+                    const span = document.createElement('span');
+                    span.className = 'code-char';
+                    span.textContent = char === ' ' ? '\u00A0' : char;
+                    lineDiv.appendChild(span);
+                });
+                codeDisplay.appendChild(lineDiv);
+            });
+            
+            codeInput.value = '';
+            codeInput.disabled = true;
+            startBtn.disabled = false;
+            resetBtn.disabled = true;
+            updateStats();
+            gameResult.classList.remove('show');
+        }
+        
+        function startGame() {
+            isPlaying = true;
+            startTime = Date.now();
+            codeInput.disabled = false;
+            codeInput.focus();
+            startBtn.disabled = true;
+            resetBtn.disabled = false;
+            
+            timerInterval = setInterval(() => {
+                if (startTime) {
+                    const elapsed = Math.floor((Date.now() - startTime) / 1000);
+                    timerDisplay.textContent = elapsed + 's';
+                    updateWPM();
+                }
+            }, 100);
+        }
+        
+        function updateWPM() {
+            if (!startTime || currentIndex === 0) {
+                wpmDisplay.textContent = '0';
+                return;
+            }
+            const elapsed = (Date.now() - startTime) / 1000 / 60; // minutes
+            const wpm = Math.round(currentIndex / 5 / elapsed);
+            wpmDisplay.textContent = wpm || '0';
+        }
+        
+        function updateStats() {
+            if (totalChars === 0) {
+                accuracyDisplay.textContent = '100%';
+            } else {
+                const accuracy = Math.round((correctChars / totalChars) * 100);
+                accuracyDisplay.textContent = accuracy + '%';
+            }
+        }
+        
+        function checkInput() {
+            const input = codeInput.value;
+            const chars = codeDisplay.querySelectorAll('.code-char');
+            
+            chars.forEach((char, index) => {
+                char.classList.remove('correct', 'incorrect', 'current');
+                
+                if (index < input.length) {
+                    if (input[index] === currentCode[index]) {
+                        char.classList.add('correct');
+                        if (index >= currentIndex) {
+                            correctChars++;
+                            totalChars++;
+                        }
+                    } else {
+                        char.classList.add('incorrect');
+                        if (index >= currentIndex) {
+                            totalChars++;
+                        }
+                    }
+                }
+                
+                if (index === input.length) {
+                    char.classList.add('current');
+                }
+            });
+            
+            currentIndex = input.length;
+            updateStats();
+            updateWPM();
+            
+            if (input === currentCode) {
+                endGame(true);
+            }
+        }
+        
+        function endGame(won) {
+            isPlaying = false;
+            codeInput.disabled = true;
+            clearInterval(timerInterval);
+            
+            if (won) {
+                const elapsed = (Date.now() - startTime) / 1000;
+                const wpm = Math.round(currentIndex / 5 / (elapsed / 60));
+                const accuracy = Math.round((correctChars / totalChars) * 100);
+                
+                gameResult.innerHTML = `
+                    <h3 style="color: #4caf50; margin-bottom: 1rem;">🎉 Challenge Complete!</h3>
+                    <p style="color: #555; font-size: 1.1rem;">
+                        <strong>Final WPM:</strong> ${wpm}<br>
+                        <strong>Accuracy:</strong> ${accuracy}%<br>
+                        <strong>Time:</strong> ${Math.round(elapsed)}s
+                    </p>
+                `;
+                gameResult.classList.add('show');
+            }
+        }
+        
+        function resetGame() {
+            clearInterval(timerInterval);
+            initGame();
+        }
+        
+        startBtn.addEventListener('click', () => {
+            if (!isPlaying) {
+                startGame();
+            }
+        });
+        
+        resetBtn.addEventListener('click', resetGame);
+        
+        codeInput.addEventListener('input', () => {
+            if (isPlaying) {
+                checkInput();
+            }
+        });
+        
+        codeInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                e.preventDefault();
+                const start = codeInput.selectionStart;
+                const end = codeInput.selectionEnd;
+                codeInput.value = codeInput.value.substring(0, start) + '    ' + codeInput.value.substring(end);
+                codeInput.selectionStart = codeInput.selectionEnd = start + 4;
+                checkInput();
+            }
+        });
+        
+        // Initialize game on load
+        initGame();
+    </script>
+</body>
+</html>
+

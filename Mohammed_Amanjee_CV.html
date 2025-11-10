@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Amanjee - CV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        @page {
+            size: A4;
+            margin: 1.5cm 1.2cm;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.5;
+            color: #333;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 0;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #2c3e50;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            position: relative;
+            page-break-after: avoid;
+        }
+        
+        .profile-picture {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid #3498db;
+            margin: 0 auto 15px;
+            background-color: #ecf0f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7f8c8d;
+            font-size: 14px;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .profile-picture img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-picture-placeholder {
+            padding: 10px;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .header .title {
+            font-size: 16px;
+            color: #7f8c8d;
+            font-weight: 300;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+            font-size: 12px;
+            color: #555;
+        }
+        
+        .contact-info span {
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .section {
+            margin-bottom: 20px;
+            page-break-inside: avoid;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 6px;
+            margin-bottom: 15px;
+            margin-top: 15px;
+            font-weight: 600;
+            page-break-after: avoid;
+        }
+        
+        .section.page-break {
+            page-break-before: always;
+        }
+        
+        .experience-item, .education-item, .cert-item {
+            margin-bottom: 18px;
+            padding-left: 15px;
+            border-left: 3px solid #ecf0f1;
+            padding-bottom: 12px;
+            page-break-inside: avoid;
+        }
+        
+        .job-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 3px;
+        }
+        
+        .company-name {
+            font-size: 14px;
+            color: #3498db;
+            font-weight: 500;
+            margin-bottom: 3px;
+        }
+        
+        .location {
+            font-size: 12px;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+        
+        .job-description {
+            margin-top: 8px;
+            padding-left: 8px;
+        }
+        
+        .job-description ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .job-description li {
+            padding: 3px 0;
+            padding-left: 18px;
+            position: relative;
+            font-size: 13px;
+        }
+        
+        .job-description li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+        
+        .skill-category {
+            background-color: #f8f9fa;
+            padding: 12px;
+            border-radius: 5px;
+            border-left: 4px solid #3498db;
+            page-break-inside: avoid;
+        }
+        
+        .skill-category h4 {
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .skill-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .skill-list li {
+            padding: 3px 0;
+            color: #555;
+            font-size: 12px;
+        }
+        
+        .awards-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .awards-list li {
+            padding: 6px 0;
+            padding-left: 25px;
+            position: relative;
+            border-bottom: 1px solid #ecf0f1;
+            page-break-inside: avoid;
+        }
+        
+        .awards-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .awards-list li:before {
+            content: "🏆";
+            position: absolute;
+            left: 0;
+        }
+        
+        .award-title {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 14px;
+        }
+        
+        .award-description {
+            color: #7f8c8d;
+            font-size: 12px;
+            margin-top: 2px;
+        }
+        
+        .cert-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .cert-list li {
+            padding: 6px 0;
+            padding-left: 20px;
+            position: relative;
+            font-size: 13px;
+        }
+        
+        .cert-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0;
+            }
+            .section.page-break {
+                page-break-before: always;
+            }
+            .section-title {
+                page-break-after: avoid;
+            }
+            .experience-item, .education-item {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="profile-picture">
+                <img src="Downloads/IMG_5620.jpg" alt="Mohammed Amanjee" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'profile-picture-placeholder\'>Add Your<br>Photo Here</div>';">
+            </div>
+            <h1>Mohammed Amanjee</h1>
+            <div class="title">Computer Science</div>
+            <div class="contact-info">
+                <span>Phone: <a href="tel:+27608270838">+27 608270838</a></span>
+                <span>•</span>
+                <span>Email: <a href="mailto:mohammedamanjee@gmail.com">mohammedamanjee@gmail.com</a></span>
+                <span>•</span>
+                <span>Location: Rustenburg, South Africa</span>
+                <span>•</span>
+                <span>Portfolio: <a href="portfolio.html" target="_blank">View Portfolio</a></span>
+                <span>•</span>
+                <span>LinkedIn: <a href="https://www.linkedin.com/in/mohammed-amanjee-881725285" target="_blank">View Profile</a></span>
+                <span>•</span>
+                <span>GitHub: <a href="https://github.com/MoAmanjee" target="_blank">MoAmanjee</a></span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Experience</h2>
+            
+            <div class="experience-item">
+                <div class="job-title">Website Manager</div>
+                <div class="company-name">Isak Muhammad</div>
+                <div class="location">Rustenburg, South Africa</div>
+                <div class="job-description">
+                    <ul>
+                        <li>Managed and updated the website of the DStv franchise store, ensuring accurate product listings, promotions, and service offerings</li>
+                        <li>Oversaw website content, layout, and performance to improve user experience and customer engagement</li>
+                        <li>Contributed to a measurable increase in online visibility and customer traffic during tenure</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-title">Website Manager</div>
+                <div class="company-name">E-tech Cars</div>
+                <div class="location">Ibraheem Essop – Rustenburg, South Africa</div>
+                <div class="job-description">
+                    <ul>
+                        <li>Managed and maintained the garage's website vehicle listings and promotions</li>
+                        <li>Improved the website's design and performance to attract more local traffic and bookings</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="job-title">Technical Support Assistant</div>
+                <div class="company-name">Syds Suspension</div>
+                <div class="location">Pretoria, South Africa</div>
+                <div class="job-description">
+                    <ul>
+                        <li>Provided technical support for in-store computer systems, including maintenance, troubleshooting, and software updates</li>
+                        <li>Assisted staff with system issues, ensuring minimal downtime during customer service and operations</li>
+                        <li>Set up and maintained POS (Point of Sale) systems, printers, and customer management software</li>
+                        <li>Helped with IT inventory management, such as tracking and replacing hardware when needed</li>
+                        <li>Provided basic training to staff on using business software effectively</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section page-break">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Programming Languages</h4>
+                    <ul class="skill-list">
+                        <li>Python</li>
+                        <li>Java</li>
+                        <li>JavaScript</li>
+                        <li>C, C++</li>
+                        <li>SQL</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Web Technologies</h4>
+                    <ul class="skill-list">
+                        <li>HTML</li>
+                        <li>XML</li>
+                        <li>API Integration</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Databases</h4>
+                    <ul class="skill-list">
+                        <li>MySQL</li>
+                        <li>Microsoft SQL Server</li>
+                        <li>SQL Database</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Development & Tools</h4>
+                    <ul class="skill-list">
+                        <li>Website Management</li>
+                        <li>Content Creation</li>
+                        <li>User Experience</li>
+                        <li>Project Management</li>
+                        <li>Software Debugging</li>
+                        <li>Testing and Maintenance</li>
+                        <li>Mobile Application Development</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4>Specialized Skills</h4>
+                    <ul class="skill-list">
+                        <li>Machine Learning</li>
+                        <li>Cybersecurity Knowledge</li>
+                        <li>Technical Support</li>
+                        <li>Creative Problem Solving</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Education</h2>
+            
+            <div class="education-item">
+                <div class="job-title">Bachelor of Science (BSc Hons) in Computer Science</div>
+                <div class="company-name">University of the Free State (UFS)</div>
+                <div class="location">2026</div>
+            </div>
+
+            <div class="education-item">
+                <div class="job-title">Bachelor of Science (BSc) Information Technology</div>
+                <div class="company-name">University of the Free State (UFS)</div>
+                <div class="location">2024</div>
+            </div>
+
+            <div class="education-item">
+                <div class="job-title">National Senior Certificate (Matric)</div>
+                <div class="company-name">Lebone II College of the Royal Bafokeng</div>
+                <div class="location">2021</div>
+            </div>
+
+            <div class="education-item">
+                <div class="job-title">Grade 1 - Matric</div>
+                <div class="company-name">Lebone College of the Royal Bafokeng</div>
+                <div class="location">Completed in required years (no repeats)</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Certifications</h2>
+            <ul class="cert-list">
+                <li>DStv Accredited Installer</li>
+                <li>First Aid Level 1</li>
+                <li>Skippers Licence</li>
+                <li>Personal Trainer</li>
+            </ul>
+        </div>
+
+        <div class="section" style="margin-top: 10px;">
+            <h2 class="section-title" style="margin-top: 10px;">Accomplishments and Awards</h2>
+            <ul class="awards-list">
+                <li>
+                    <div class="award-title">Silver Medalist – Commonwealth Games</div>
+                    <div class="award-description">Represented South Africa and placed 2nd in judo at the Commonwealth Games</div>
+                </li>
+                <li>
+                    <div class="award-title">Multiple-Time South African Judo Champion</div>
+                    <div class="award-description">Ranked 1st nationally across various age divisions over several years</div>
+                </li>
+                <li>
+                    <div class="award-title">Black Belt in Judo</div>
+                    <div class="award-description">Achieved black belt status after over 16 years of consistent training and national-level competition</div>
+                </li>
+                <li>
+                    <div class="award-title">National Team Representative – South Africa</div>
+                    <div class="award-description">Selected to represent South Africa in international judo competitions</div>
+                </li>
+                <li>
+                    <div class="award-title">Head Coach – NWU Judo Club</div>
+                    <div class="award-description">Appointed head coach due to leadership, experience, and competitive success in judo</div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section" style="margin-top: 10px;">
+            <h2 class="section-title" style="margin-top: 10px;">Hobbies and Interests</h2>
+            <p style="padding-left: 15px; color: #555; line-height: 1.6; font-size: 13px;">
+                <strong>Judo:</strong> Black belt judoka with over 16 years of experience, multiple-time South African champion, and silver medalist at the Commonwealth Games. Passionate about discipline, physical fitness, and teaching the next generation of athletes.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+
